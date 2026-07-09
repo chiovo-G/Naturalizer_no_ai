@@ -1,0 +1,3 @@
+interface:
+  display_name: "Chinese Prose Naturalizer"
+  short_description: "Naturalize Chinese academic and report prose."
