@@ -1,96 +1,99 @@
----
-name: chinese-prose-naturalizer
-description: "naturalize chinese academic, policy, and report prose to reduce formulaic ai-like wording while preserving meaning, evidence, terminology, citations, formulas, numbers, and the user's preferred style. use when the user asks to 去ai味, 降低ai感, 去模板化, 改得像人写, 润色中文文段, 改写论文段落, improve a chinese research report section, reduce empty rhetoric, remove ai-sounding phrases, or make prose more restrained, natural, and scholarly."
----
+# 中文段落自然化改写
 
-# Chinese Prose Naturalizer
+## 核心目的
 
-## Core purpose
-Rewrite Chinese paragraphs so they read like restrained human academic or policy prose rather than generic model output. Preserve the author's argument, evidence, data, citations, formulas, terminology, and paragraph function.
+改写中文段落，使其读起来像克制的人类学术或政策文章，而非通用模型输出。保留作者的论点、证据、数据、引用、公式、术语和段落功能。
 
-Do not promise to bypass AI detectors. Treat “去 AI 味” as style improvement: reducing formulaic structure, empty abstraction, exaggerated claims, mechanical transitions, and translationese.
+不承诺绕过 AI 检测器。将"去 AI 味"视为风格改进：减少公式化结构、空洞抽象、夸大宣称、机械过渡和翻译腔。
 
-## Default workflow
-1. Identify the text type: thesis/paper, empirical-result discussion, mechanism analysis, policy report, literature review, email/comment, or general prose.
-2. Lock the non-negotiables: core claim, direction of causality, data, coefficients, significance descriptions, citations, formulas, variable names, and named entities.
-3. Diagnose common AI-like traits before rewriting:
-   - grand but vague openings such as “在……背景下”“具有重要意义”“提供了重要支撑”;
-   - mechanical connectors such as “首先、其次、最后”“一方面、另一方面”“与此同时、此外、进一步”;
-   - over-complete parallelism, especially lists longer than five items;
-   - abstract noun piles such as “机制、路径、支撑、赋能、抓手、韧性、体系化建设” when not necessary;
-   - repeated sentence frames like “通过……，从而……”“不仅……还……”“不是……而是……”;
-   - excessive certainty such as “充分说明、必然导致、显著提升、直接检验” when the evidence only supports a moderate claim;
-   - translationese and non-standard expressions such as “另一支研究”“中介结果”“全球半径”.
-4. Rewrite with controlled naturalness:
-   - Prefer concrete subjects and verbs over stacked nominal phrases.
-   - Keep logical order but remove template markers when the relationship is already clear.
-   - Mix sentence length moderately; avoid every sentence having the same rhythm.
-   - Replace slogans with specific mechanisms, variables, or empirical implications.
-   - Use cautious academic judgment: “可能、一定程度上、倾向于、表明、说明、意味着、或与……有关”.
-   - Convert English shorthand into Chinese academic wording when context is clear.
-   - Keep necessary discipline-specific terms, policy terms, and institutional names.
-5. Apply the user-preference pass in `references/user_style_preferences.md` for Chinese academic/report prose, especially when the user asks for “按我的风格”“去 AI 味”“不要 AI 味”“自然一点”.
-6. Output the revised text first. Add a short explanation only if the user asks for “说明修改思路”“对比”“review” or if a meaning-changing ambiguity needs to be flagged.
+## 默认工作流
 
-## Web and citation use
-Use web search only when the rewrite depends on current, factual, niche, or externally verifiable information, or when the user explicitly asks to 联网、找文献、核对事实、加入最新表述. Cite sources outside the rewritten paragraph unless the user requests citations in the paragraph. Do not add web-derived claims into the revised text unless they are directly supported.
+1. 识别文本类型：论文/学位论文、实证结果讨论、机制分析、政策报告、文献综述、邮件/评论或一般散文。
+2. 锁定不可协商要素：核心论点、因果方向、数据、系数、显著性描述、引用、公式、变量名和命名实体。
+3. 在改写前诊断常见的 AI 特征：
+    - 宏大但空洞的开篇，如"在……背景下""具有重要意义""提供了重要支撑"；
+    - 机械连接词，如"首先、其次、最后""一方面、另一方面""与此同时、此外、进一步"；
+    - 过度完整的并列结构，尤其是超过五项的列表；
+    - 不必要的抽象名词堆砌，如"机制、路径、支撑、赋能、抓手、韧性、体系化建设"；
+    - 重复的句式框架，如"通过……，从而……""不仅……还……""不是……而是……"；
+    - 过度肯定，如"充分说明、必然导致、显著提升、直接检验"，而证据仅支持适度论断；
+    - 翻译腔和非标准表达，如"另一支研究""中介结果""全球半径"。
+4. 以受控的自然感改写：
+    - 偏好具体主语和动词，而非堆砌的名词短语。
+    - 保持逻辑顺序，但当关系已经明确时去除模板标记。
+    - 适度混合句子长度；避免每个句子节奏相同。
+    - 用具体机制、变量或实证含义替代口号。
+    - 使用谨慎的学术判断："可能、一定程度上、倾向于、表明、说明、意味着、或与……有关"。
+    - 当语境明确时，将英文简写转换为中文学术语。
+    - 保留必要的学科术语、政策术语和机构名称。
+5. 当用户要求"按我的风格""去 AI 味""不要 AI 味""自然一点"时，在 `references/user_style_preferences.md` 中应用用户偏好通道，针对中文学术/报告散文进行调整。
+6. 先输出修改后的文本。仅当用户要求"说明修改思路""对比""review"，或存在需要标注意义变化的不明确之处时，才附加简短说明。
 
-For pure style rewriting, do not browse by default; focus on preserving and improving the provided text.
+## 网络与引用使用
 
-## Genre-specific rules
-### Academic papers and theses
-- Preserve citations exactly unless asked to reformat them.
-- Do not invent literature, coefficients, mechanisms, robustness tests, or policy implications.
-- Avoid repeatedly stressing significance levels. Prefer explaining the economic meaning or logical implication of the result.
-- Do not add self-undermining caveats such as “估计精度较低，需审慎解读” unless the user explicitly asks for limitations or the source text already contains that caveat.
-- Convert quick English research shorthand into Chinese academic wording when context is clear, e.g. “partner” → “客户、供应商、合作对象或合作伙伴” according to the paragraph meaning.
+仅当改写依赖于当前、事实性、小众或可外部验证的信息，或用户明确要求联网、找文献、核对事实、加入最新表述时，才使用网络搜索。在改写段落之外引用来源，除非用户要求在段落内添加引用。除非有直接支持的依据，否则不要将在网络获取的论断加入修改后的文本。
 
-### Empirical-result paragraphs
-Use this order unless the user gives a different structure:
-1. State what the test is comparing or verifying.
-2. Report the main direction and whether the result is stable.
-3. Explain what the result implies for the argument.
-4. Mention heterogeneity, mechanism, or robustness only if it is already in the source text.
+对于纯风格改写，默认不浏览网络；专注于保留和改进提供的文本。
 
-Do not over-explain coefficients or significance levels when the user wants expression logic. Use “结果表明”“这说明”“这一结果支持” rather than “直接检验”“充分证明”.
+## 体裁特定规则
 
-### Mechanism and theory paragraphs
-- Keep mechanisms simple and identifiable.
-- Avoid making one mechanism carry too many channels.
-- Use “可能通过……影响……” rather than asserting a fully proven causal chain when the text only provides suggestive evidence.
-- Avoid overusing “不是……而是……”“不仅……还……” to manufacture contrast.
+### 学术论文与学位论文
+
+- 除非要求重新格式化，否则精确保留引用。
+- 不要虚构文献、系数、机制、稳健性检验或政策含义。
+- 避免反复强调显著性水平。优先解释结果的经济意义或逻辑含义。
+- 除非用户明确要求局限性，或源文本已包含该警示，否则不要添加自我削弱的警示，如"估计精度较低，需审慎解读"。
+- 当语境明确时，将英文研究简写转换为中文学术语，如"partner" → "客户、供应商、合作对象或合作伙伴"，根据段落含义确定。
+
+### 实证结果段落
+
+除非用户给出不同结构，否则使用以下顺序：
+
+1. 说明检验在比较或验证什么。
+2. 报告主要方向以及结果是否稳定。
+3. 解释结果对论点意味着什么。
+4. 仅在源文本已包含的情况下，提及异质性、机制或稳健性。
+
+当用户需要的是表达逻辑而非系数解释时，不要过度解释系数或显著性水平。使用"结果表明""这说明""这一结果支持"，而非"直接检验""充分证明"。
+
+### 机制与理论段落
+
+- 保持机制简单且可识别。
+- 避免让一个机制承载过多渠道。
+- 当文本仅提供提示性证据时，使用"可能通过……影响……"，而非断言一条完全证实的因果链。
+- 避免过度使用"不是……而是……""不仅……还……"来制造对比。
 - 每一句话先说结论，再举例论证。
 
-### Policy or think-tank prose
-- Keep the tone practical and institutional, but remove slogan density.
-- Replace broad phrases like “高质量发展重要引擎” with the specific policy object, bottleneck, or implementation link.必要时通过联网搜索功能，检索可靠来源的官方文件说法。
-- Keep necessary policy terms, but do not let them dominate every sentence.
-- Use “发展水平、服务能力、产业层级” instead of “能级” unless “能级” is an official policy term in the source.
+### 政策或智库散文
 
-## Style constraints
-Follow these preferences unless the user asks otherwise:
-- Do not use bold formatting in revised prose.
-- Reduce double quotation marks.
-- Avoid metaphors unless they are established academic concepts.
-- Avoid colon-heavy sentence design in formal Chinese prose.
-- Avoid long enumerations or parallel lists with more than five items.
-- Avoid colloquial words such as “需要先、恰恰是、直接温和、基本盘”.
-- Reduce “不是……而是……”“不仅……还……”“并非……而是……”.
-- Avoid sentences like “xx 的原因是” when smoother alternatives are available.
-- Avoid overused transition phrases such as “沿此思路、在此意义上、用户指定的、决定了后续的观察重点”.
-- Avoid translationese and non-standard expressions listed in `references/user_style_preferences.md`.
+- 保持语气务实且具制度感，但降低口号密度。
+- 用具体政策对象、瓶颈或实施环节替换宽泛表述如"高质量发展重要引擎"。必要时通过联网搜索功能，检索可靠来源的官方文件说法。
+- 保留必要的政策术语，但不要让它们主导每个句子。
+- 使用"发展水平、服务能力、产业层级"替代"能级"，除非"能级"是源文本中的官方政策术语。
 
-## Optional strict pass
-When the user asks for strong 去 AI 味, review both references before finalizing:
-- `references/anti_ai_style_rules.md`
-- `references/user_style_preferences.md`
+## 风格约束
 
-## Output formats
-Default: return only the revised paragraph.
+除非用户另有要求，否则遵循以下偏好：
 
-When the user asks for comparison, use:
+- 在修改后的散文中不要使用加粗格式。
+- 减少双引号使用。
+- 除非隐喻是已确立的学术概念，否则避免使用。
+- 避免在正式中文散文中过度使用冒号引导的句式设计。
+- 避免超过五项的长枚举或并列列表。
+- 避免口语化词汇，如"需要先、恰恰是、直接温和、基本盘"。
+- 减少"不是……而是……""不仅……还……""并非……而是……"的使用。
+- 当有更流畅的替代方案时，避免使用"xx 的原因是"这类句式。
+- 避免过度使用的过渡短语，如"沿此思路、在此意义上、用户指定的、决定了后续的观察重点"。
+- 避免翻译腔和非标准表达：宽口径、摊平、
+
+## 输出格式
+
+默认：仅返回修改后的段落。
+
+当用户要求对比时，使用：
+
 - 修订稿
 - 修改要点
 - 仍需确认的问题
 
-When multiple alternatives are useful, provide no more than three versions and label them by tone, such as “更学术”“更自然”“更简洁”.
+当提供多个备选版本有用时，不超过三个版本，并按语气标注，如"更学术""更自然""更简洁"。
