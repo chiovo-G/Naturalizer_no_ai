@@ -1,3 +1,8 @@
+---
+name: naturalizer-no-ai
+description: 改写中文段落，去除 AI 味……当用户要求"去 AI 味"……时使用。
+---
+
 # 中文段落自然化改写
 
 ## 核心目的
