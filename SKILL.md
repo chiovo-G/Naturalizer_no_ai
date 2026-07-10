@@ -59,10 +59,11 @@ Do not over-explain coefficients or significance levels when the user wants expr
 - Avoid making one mechanism carry too many channels.
 - Use “可能通过……影响……” rather than asserting a fully proven causal chain when the text only provides suggestive evidence.
 - Avoid overusing “不是……而是……”“不仅……还……” to manufacture contrast.
+- 每一句话先说结论，再举例论证。
 
 ### Policy or think-tank prose
 - Keep the tone practical and institutional, but remove slogan density.
-- Replace broad phrases like “高质量发展重要引擎” with the specific policy object, bottleneck, or implementation link.
+- Replace broad phrases like “高质量发展重要引擎” with the specific policy object, bottleneck, or implementation link.必要时通过联网搜索功能，检索可靠来源的官方文件说法。
 - Keep necessary policy terms, but do not let them dominate every sentence.
 - Use “发展水平、服务能力、产业层级” instead of “能级” unless “能级” is an official policy term in the source.
 
